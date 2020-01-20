@@ -1,15 +1,15 @@
-from urllib.request import urlopen
 import requests
 from bs4 import BeautifulSoup as soup
 
 class news(object):
-	"""docstring for news"""
+
 	def __init__(self):
 		self.head = []
 		self.link = []
 
 	def update(self):
-		nt = 'https://www.nytimes.com/section/'
+		n = 'https://www.nytimes.com/'
+		nt = n +'section/'
 		topics = ['world', 'science', 'technology']
 
 		self.head = []
@@ -29,13 +29,18 @@ class news(object):
 					newl.append(ntl.find('a'))
 			nt_news	= newl
 			news_head = [ntl.get_text() for ntl in nt_news]
-			news_link = [ntl['href'] for ntl in nt_news]
+			news_link = [n+str(ntl['href']) for ntl in nt_news]
 			self.head.append(news_head)
 			self.link.append(news_link)
 
 	def disp(self):
 		print(*self.link[1], sep="\n")
 
+
+def start():
+	newz = news()
+	newz.update()
+	return newz
 # g_tech = s.get(gn, headers=headers)
 # print(g_tech.status_code)
 # so = soup(g_tech.content, 'html.parser')
@@ -44,7 +49,7 @@ class news(object):
 # newl=[]
 # for gnl in g_news_list:
 # 	if gnl.find('h3')!=None:
-# 		newl.append(gnl.find('h3')) 
+# 		newl.append(gnl.find('h3'))
 # g_news_list	= newl
 # print(len(g_news_list))
 # g_news_list = [gnl.find('a', class_='DY5T1d') for gnl in g_news_list]
@@ -53,7 +58,7 @@ class news(object):
 # self.head.append(gt_head)
 # self.link.append(gt_link)
 
-if __name__ == "__main__":
-	news = news()
-	news.update()
-	news.disp()
+# if __name__ == "__main__":
+# 	news = news()
+# 	news.update()
+# 	news.disp()
