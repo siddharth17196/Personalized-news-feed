@@ -14,9 +14,6 @@ with open('confidential.txt','r') as f:
 email_addr = details[0][6:-1]
 password = details[1][6:-1]
 reciever = details[2][6:-1]
-# email_addr = 'shizzlenfizzle@gmail.com'
-# password = 'siddupiddu'
-# reciever = 'siddharthnair49@gmail.com'
 
 nws = ''
 for i in range(len(news.head)):
